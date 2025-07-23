@@ -1,4 +1,4 @@
-package com.in28minutes.resr.webservices.restful_web_services;
+package com.abhi.rest.webservices.restful_web_services;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

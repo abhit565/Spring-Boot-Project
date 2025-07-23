@@ -1,4 +1,4 @@
-package com.in28minutes.resr.webservices.restful_web_services.user;
+package com.abhi.rest.webservices.restful_web_services.user;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
