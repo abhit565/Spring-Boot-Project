@@ -52,8 +52,12 @@ public class UserResource
 		User user = service.findone(id);
 		
 		if(user==null)
-			throw new UserNotFoundException("id:"+id);
-		return user	;
+		{
+			throw new usernotfoundException("id"+id);
+		}
+		return user;
+		
+		
 		
 	}
 	
