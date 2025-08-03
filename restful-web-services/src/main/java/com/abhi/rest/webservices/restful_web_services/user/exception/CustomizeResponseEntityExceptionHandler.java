@@ -15,7 +15,11 @@ public class CustomizeResponseEntityExceptionHandler extends ResponseEntityExcep
 {
 	@ExceptionHandler(Exception.class)
 	public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) throws Exception {	
-ErrorDetails errodetails=new ErrorDetails(LocalDateTime.now(),
+
+		//What I want to do in here is to
+//create my own custom exception object.
+		
+		ErrorDetails errodetails=new ErrorDetails(LocalDateTime.now(),
 		ex.getMessage(),request.getDescription(false));
 
 return new ResponseEntity(errodetails, HttpStatus.INTERNAL_SERVER_ERROR);

@@ -68,8 +68,12 @@ public class UserDaoService
 //which is matching that specific id.This would return an optional back on that youwould need to do a get() to get the user back.And I would say this return
 	}
 	
+	public void deletebyId(int id)
+	{
+		Predicate<? super User> predicate=user->user.getId().equals(id);
+	users.removeIf(predicate);		
+		
 	
-	
-	
+	}
 	}
 

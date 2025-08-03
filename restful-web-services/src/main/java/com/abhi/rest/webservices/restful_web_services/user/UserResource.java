@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,6 +62,12 @@ public class UserResource
 		
 	}
 	
+	@DeleteMapping("/users/{id}")
+	public void deleteUser(@PathVariable int id) //we need list of user back and this is for specific user
+	{
+		service.deletebyId(id);
+
+	}
 	//to add a specific user
 	/*@PostMapping("/users")
 	public void createUser(@RequestBody User user) //mapped body of incoming http request to java object
