@@ -1,9 +1,14 @@
 package com.abhi.rest.webservices.restful_web_services.user;
 
+
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,13 +35,13 @@ public class UserResource
 		this.service=service;
 	}
 	@GetMapping("/users") 
-	public List<User> retrieveUser()
+	public List<User> retrieveAllUser()
 	{
 		return service.findAll();
 	}
 	
 //	@GetMapping("/users/1")
-	@GetMapping("/users/{id}")  //all user
+//	@GetMapping("/users/{id}")  //all user
 	//public List<User> retrieveUser(@PathVariable int id) //we need list of user back
 	//{
 	//	return service.findone(id);
@@ -48,15 +53,19 @@ public class UserResource
 	 * }
 	 */
 	
-	public User retrieveUser(@PathVariable int id) //we need list of user back and this is for specific user
+	@GetMapping("/users/{id}")
+	public EntityModel<User> retrieveUser(@PathVariable int id) //we need list of user back and this is for specific user
 	{
 		User user = service.findone(id);
 		
 		if(user==null)
-		{
+		
 			throw new usernotfoundException("id"+id);
-		}
-		return user;
+		
+		EntityModel<User> entityModel=EntityModel.of(user);
+		WebMvcLinkBuilder link=linkTo(methodOn(this.getClass()).retrieveAllUser());
+		entityModel.add(link.withRel("all-users"));
+		return entityModel;
 		
 		
 		
