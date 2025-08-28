@@ -28,9 +28,9 @@ public class UserDaoService
 		//So we are creating Adam, who's 30 years old.
 		//So we are using LocalDate to fetch the current date
          //and subtracting 30 years from it.
-		users.add(new User(++userscount,"adam",LocalDate.now().minusYears(30)));
-		users.add(new User(++userscount,"eve",LocalDate.now().minusYears(25)));
-	users.add(new User(++userscount,"jim",LocalDate.now().minusYears(20)));
+		users.add(new User(++userscount,"rupesh",LocalDate.now().minusYears(30)));
+		users.add(new User(++userscount,"aashvi",LocalDate.now().minusYears(25)));
+	users.add(new User(++userscount,"abhimanyu",LocalDate.now().minusYears(20)));
 	}
 	
 	public List<User> findAll()
